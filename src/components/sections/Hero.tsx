@@ -211,7 +211,6 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const heroTextRef = useRef<HTMLDivElement | null>(null);
-  const progressBarRef = useRef<HTMLDivElement | null>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const tickingRef = useRef(false);
   const prevVisibleIdsRef = useRef<string>("");
@@ -336,10 +335,6 @@ export function Hero() {
           heroTextRef.current.style.transform = `translateY(${progress * 40}px)`;
         }
 
-        if (progressBarRef.current) {
-          progressBarRef.current.style.transform = `scaleX(${progress})`;
-        }
-
         updateAnnotations(progress);
         tickingRef.current = false;
       });
@@ -388,15 +383,6 @@ export function Hero() {
           </div>
         )}
 
-        {/* Top scroll progress bar */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[2px] bg-white/10">
-          <div
-            ref={progressBarRef}
-            className="h-full origin-left bg-gradient-to-r from-amber-300 to-amber-500"
-            style={{ transform: "scaleX(0)" }}
-          />
-        </div>
-
         {/* Header */}
         <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 md:px-10">
           <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/70">
@@ -418,14 +404,8 @@ export function Hero() {
           <AnimatedHeadline />
           <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-white/65 md:text-lg">
             13.8 billion years ago, the universe was a point smaller than an
-            atom. Scroll to watch it become galaxies, stars — and you.
+            atom. Watch it become galaxies, stars — and you.
           </p>
-          <div className="mt-12 flex flex-col items-center gap-2 text-white/50">
-            <div className="font-mono text-[10px] uppercase tracking-[0.32em]">
-              Scroll
-            </div>
-            <div className="h-10 w-[1px] bg-gradient-to-b from-white/40 to-transparent" />
-          </div>
         </div>
 
         {/* Annotation cards + leader lines */}
